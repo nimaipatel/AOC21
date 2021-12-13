@@ -5,6 +5,10 @@ getIncreases xs = length $ filter (LT ==) ordering
     getOrdering _ = []
     ordering = getOrdering xs
 
+-- more elegant solution
+getIncreases' :: [Integer] -> Int
+getIncreases' xs = length $ filter (LT ==) $ zipWith compare xs (tail xs)
+
 main = do
   input <- map read . lines <$> readFile "input.txt"
-  print (getIncreases input)
+  print (getIncreases' input)
