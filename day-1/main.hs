@@ -1,4 +1,4 @@
-getIncreases :: [Integer] -> Int
+getIncreases :: [Int] -> Int
 getIncreases xs = length $ filter (LT ==) ordering
   where
     getOrdering (x1 : x2 : xs) = compare x1 x2 : getOrdering (x2 : xs)
@@ -6,7 +6,7 @@ getIncreases xs = length $ filter (LT ==) ordering
     ordering = getOrdering xs
 
 -- more elegant solution
-getIncreases' :: [Integer] -> Int
+getIncreases' :: [Int] -> Int
 getIncreases' xs = length $ filter (LT ==) $ zipWith compare xs (tail xs)
 
 main = do

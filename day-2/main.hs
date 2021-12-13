@@ -1,10 +1,10 @@
-parseInput :: String -> [(String, Integer)]
+parseInput :: String -> [(String, Int)]
 parseInput input = map getTuple $ lines input
   where
     getTuple pair = (head (words pair), read $ words pair !! 1)
 
 -- solution for part 1
-getPositionOne :: [(String, Integer)] -> Maybe (Integer, Integer)
+getPositionOne :: [(String, Int)] -> Maybe (Int, Int)
 getPositionOne = foldl f $ Just (0, 0)
   where
     f (Just (hDisp, vDisp)) (dir, mag)
@@ -14,7 +14,7 @@ getPositionOne = foldl f $ Just (0, 0)
     f _ _ = Nothing
 
 -- solution for part 2
-getPositionTwo :: [(String, Integer)] -> Maybe (Integer, Integer, Integer)
+getPositionTwo :: [(String, Int)] -> Maybe (Int, Int, Int)
 getPositionTwo = foldl f $ Just (0, 0, 0)
   where
     f (Just (hDisp, vDisp, aim)) (dir, mag)
